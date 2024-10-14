@@ -50,7 +50,7 @@ if user_prompt:
     st.chat_message("user").markdown(user_prompt)
 
     # Custom response for name inquiry
-    if any(keyword in user_prompt.lower() for keyword in ["what is your name", "who are you", "your name","how shall i adress you","what can i call you]):
+    if any(keyword in user_prompt.lower() for keyword in ["what is your name", "who are you", "your name","how shall i adress you","what can i call you"]):
         custom_response = "I'm Gemini-Pro, your AI assistant. Here to help you with whatever you need!"
         
         # Display the custom response
