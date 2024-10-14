@@ -49,9 +49,17 @@ if user_prompt:
     # Add user's message to chat and display it
     st.chat_message("user").markdown(user_prompt)
 
-    # Send user's message to Gemini-Pro and get the response
-    gemini_response = st.session_state.chat_session.send_message(user_prompt)
+    # Custom response for name inquiry
+    if any(keyword in user_prompt.lower() for keyword in ["what is your name", "who are you", "your name","how shall i adress you","what can i call you]):
+        custom_response = "I'm Gemini-Pro, your AI assistant. Here to help you with whatever you need!"
+        
+        # Display the custom response
+        with st.chat_message("assistant"):
+            st.markdown(custom_response)
+    else:
+        # Send user's message to Gemini-Pro and get the response
+        gemini_response = st.session_state.chat_session.send_message(user_prompt)
 
-    # Display Gemini-Pro's response
-    with st.chat_message("assistant"):
-        st.markdown(gemini_response.text)
+        # Display Gemini-Pro's response
+        with st.chat_message("assistant"):
+            st.markdown(gemini_response.text)
